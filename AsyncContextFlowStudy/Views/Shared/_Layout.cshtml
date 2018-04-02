@@ -22,8 +22,8 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li><a href="@Url.Action("FullAsync", "AsyncTest")" target="_blank">Test Full Async</a></li>
+                    <li><a href="@Url.Action("AsyncContextRun", "AsyncTest")" target="_blank">Test AsyncContext.Run</a></li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

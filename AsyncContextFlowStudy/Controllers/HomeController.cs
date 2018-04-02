@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 
 namespace AsyncContextFlowStudy.Controllers
@@ -10,21 +7,18 @@ namespace AsyncContextFlowStudy.Controllers
     {
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Entries = TestLog.Instance.GetEntries()
+                .OrderBy(x => x.Timestamp)
+                .ToArray();
 
             return View();
         }
 
-        public ActionResult Contact()
+        [HttpPost]
+        public ActionResult Reset()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            TestLog.Instance.Reset();
+            return RedirectToAction("Index");
         }
     }
 }
